@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 		<title>RoboMax</title>
-		<meta charset="UTF-8"/>
+		<meta charset="UTF-8">
 		<link rel="icon" href="images/logo2.png"/>
 		
 		<link rel="stylesheet" type="text/css" href="style.css">
@@ -28,7 +28,7 @@
 			z-index: -1;
 		}
 		
-		#prac
+		#prac, #assignments, #statistics
 		{
 			
 			display: inline-block;
@@ -41,6 +41,24 @@
 			position: absolute;
 			bottom: 18%;
 			right: 28%;
+			width: 4%;
+			height: auto;
+		}
+		
+		#loc2
+		{
+			position: absolute;
+			bottom: 33%;
+			left: 34%;
+			width: 4%;
+			height: auto;
+		}
+		
+		#loc3
+		{
+			position: absolute;
+			top: 9%;
+			left: 38.5%;
 			width: 4%;
 			height: auto;
 		}
@@ -76,15 +94,17 @@
 	    <a class="btn-floating btn-large red">
 	      <i class="large material-icons">menu</i>
 	    </a>
-	    <ul>
+	   <!-- <ul>
 	      <li class="waves-effect waves-light"><a href="#!"><i>insert_chart</i></a></li>
 	      <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">format_quote</i></a></li>
 	      <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">publish</i></a></li>
 	      <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">attach_file</i></a></li>
-	    </ul>
+	    </ul>-->
 	  </div>
 	  
-	  <a id="prac" href="#!"><img id="loc" src="images/location.png"></a>
+	  <a id="prac" href="#!"><img id="loc" src="images/location.png" class=" tooltipped" data-position="bottom" data-delay="50" data-tooltip="Practicals"></a>
+	  <a id="assignments" href="assignments.html"><img id="loc2" src="images/location.png" class=" tooltipped" data-position="bottom" data-delay="50" data-tooltip="Assignments"></a>
+	  <a id="statistics" href="#!"><img id="loc3" src="images/location.png" class=" tooltipped" data-position="bottom" data-delay="50" data-tooltip="Statistics"></a>
 	  
 	  
 	  
