@@ -1,0 +1,425 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>RoboMax</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo2.png" />
+
+    <script type="text/javascript" src="jquery-3.2.1.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="materialize/materialize/css/materialize.css">
+    <script type="text/javascript" src="materialize/materialize/js/materialize.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script type="text/javascript" src="js/progressCircle.js"></script>
+    <script type="text/javascript">
+
+	$(document).ready(function(){
+		$('.carousel.carousel-slider').carousel({fullWidth: true});
+
+		$("#progbar").circularProgress({
+			line_width: 6,
+			color: "red",
+			starting_position: 0, // 12.00 o' clock position, 25 stands for 3.00 o'clock (clock-wise)
+			percent: 0, // percent starts from
+			percentage: true,
+			text: "Progress Mark"
+		}).circularProgress('animate', 80, 2000); //get mark from database
+
+	});
+    </script>
+
+    <style>
+        .circular-progress-bar {
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .progress-percentage, .progress-text {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 0px 60px;
+        }
+
+        .progress-percentage {
+            font-size: 5em;
+            transform: translate(-50%, -65%);
+        }
+
+        .progress-text {
+            transform: translate(-50%, 100%);
+            color: red;
+            font-size: 1em;
+        }
+        /**/
+
+        .con {
+            float: left;
+            width: 50%;
+            height: 70%;
+            margin: auto;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .info {
+            width: 50%;
+            height: 100%;
+            float: left;
+            padding: 5%;
+            overflow-y: auto;
+            direction: rtl;
+            color: silver;
+            text-shadow: 1px 1px black;
+        }
+
+            .info::-webkit-scrollbar-track {
+                border-radius: 10px;
+                background: transparent;
+            }
+
+            .info::-webkit-scrollbar {
+                width: 12px;
+                background;
+                transparent;
+            }
+
+            .info::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+                background-color: #D62929;
+            }
+
+
+            .info > * {
+                //font-size: 1.9vw;
+                direction: ltr;
+            }
+
+        .gloss {
+            position: relative;
+            background-color: rgba(0,0,0,0.6);
+            width: 90%;
+            height: 80%;
+            margin: 10px auto;
+            overflow: hidden;
+            box-shadow: rgba(0,0,0,0.3) 10px 10px;
+        }
+
+        h2 {
+            height: 5%;
+            text-align: center;
+        }
+
+        .upload {
+            float: left;
+            width: 50%;
+            height: 20%;
+            text-align: center;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+            .upload a {
+                clear: both;
+            }
+
+        #ass1 {
+            background-image: url(images/assign1.png);
+            background-size: cover;
+        }
+    </style>
+
+</head>
+
+<body>
+    <ul id="slide-out" class="side-nav">
+
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="images/office.jpg">
+                </div>
+                <a href="#!user"><img class="circle" src="" alt="hehe"></a>
+                <a href="#!name"><span class="black-text name">John Doe</span></a>
+                <a href="#!email"><span class="black-text email">johnk@gmail.com</span></a>
+            </div>
+        </li>
+        <li><a href="#!"><i class="material-icons">message</i>Journal</a></li>
+        <li><a href="stats.html"><i class="material-icons">view_carousel</i>Statistics</a></li>
+        <li><a href="#!"><i class="material-icons">lock_open</i>Rewards</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Admin Rights</a></li>
+        <li><a class="waves-effect" href="#!">Download Assignments</a></li>
+        <li><a class="waves-effect" href="#!">Upload Marks</a></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="btn-large waves-effect waves-light btn-floating red button-collapse"><i class="material-icons">menu</i></a>
+
+
+    <div class="carousel carousel-slider center" data-indicators="true" style="position:absolute;width:100%;height:100%;">
+        <div class="carousel-fixed-item corner">
+            <a class="btn waves-effect waves-light btn-floating teal white-text" style="position:fixed;top:3%;right:2%;" href="index.html">X</a>
+        </div>
+        <div class="carousel-item blue white-text" href="#one!" id="p1">
+            <h2>Practical 1</h2>
+            <div class="gloss">
+
+                <div class="info">
+                    <h3>Practical brief</h3>
+                    <div class="download" align="center">
+                        <a href="files/P1.zip" class="btn waves-effect" download><i class="material-icons">assignment</i>Download P1 specs</a>
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <h4> Your Task:</h4>
+                    <ol align="left">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <div class="con">
+                    <div id="progbar"></div>
+                </div>
+                <div class="upload" align="center">
+                    <input type="file" id="uploadP1" name="uploadP1" style="visibility: hidden; width: 1px; height: 1px" multiple />
+
+                    <a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadP1').click(); return false"><i class="material-icons">input</i>Upload your file</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="carousel-item amber white-text" href="#two!">
+            <h2>Practical 2</h2>
+            <div class="gloss">
+
+                <div class="info">
+                    <h3>Practical brief</h3>
+                    <div class="download" align="center">
+                        <a href="files/P2.zip" class="btn waves-effect" download><i class="material-icons">assignment</i>Download P2 specs</a>
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <h4> Your Task:</h4>
+                    <ol align="left">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <div class="con">
+                    <div id="progbar2"></div>
+                </div>
+                <div class="upload" align="center">
+                    <input type="file" id="uploadP2" name="uploadP2" style="visibility: hidden; width: 1px; height: 1px" multiple />
+
+                    <a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadP2').click(); return false"><i class="material-icons">input</i>Upload your file</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item green white-text" href="#three!">
+            <h2>Practical 3</h2>
+            <div class="gloss">
+
+                <div class="info">
+                    <h3>Practical brief</h3>
+                    <div class="download" align="center">
+                        <a href="files/P3.zip" class="btn waves-effect" download><i class="material-icons">assignment</i>Download P3 specs</a>
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <h4> Your Task:</h4>
+                    <ol align="left">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <div class="con">
+                    <div id="progbar3"></div>
+                </div>
+                <div class="upload" align="center">
+                    <input type="file" id="uploadP3" name="uploadP3" style="visibility: hidden; width: 1px; height: 1px" multiple />
+
+                    <a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadP3').click(); return false"><i class="material-icons">input</i>Upload your file</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item purple white-text" href="#four!">
+            <h2>Practical 4</h2>
+            <div class="gloss">
+
+                <div class="info">
+                    <h3>Practical brief</h3>
+                    <div class="download" align="center">
+                        <a href="files/P4.zip" class="btn waves-effect" download><i class="material-icons">assignment</i>Download P4 specs</a>
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <h4> Your Task:</h4>
+                    <ol align="left">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <div class="con">
+                    <div id="progbar4"></div>
+                </div>
+                <div class="upload" align="center">
+                    <input type="file" id="uploadP4" name="uploadP4" style="visibility: hidden; width: 1px; height: 1px" multiple />
+
+                    <a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadP4').click(); return false"><i class="material-icons">input</i>Upload your file</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item pink white-text" href="#five!">
+            <h2>Practical 5</h2>
+            <div class="gloss">
+
+                <div class="info">
+                    <h3>Practical brief</h3>
+                    <div class="download" align="center">
+                        <a href="files/P5.zip" class="btn waves-effect" download><i class="material-icons">assignment</i>Download P5 specs</a>
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <h4> Your Task:</h4>
+                    <ol align="left">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <div class="con">
+                    <div id="progbar5"></div>
+                </div>
+                <div class="upload" align="center">
+                    <input type="file" id="uploadP5" name="uploadP5" style="visibility: hidden; width: 1px; height: 1px" multiple />
+
+                    <a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadP5').click(); return false"><i class="material-icons">input</i>Upload your file</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item blue white-text" href="#six!">
+            <h2>Practical 6</h2>
+            <div class="gloss">
+
+                <div class="info">
+                    <h3>Practical brief</h3>
+                    <div class="download" align="center">
+                        <a href="files/P6.zip" class="btn waves-effect" download><i class="material-icons">assignment</i>Download P6 specs</a>
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <h4> Your Task:</h4>
+                    <ol align="left">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <div class="con">
+                    <div id="progbar6"></div>
+                </div>
+                <div class="upload" align="center">
+                    <input type="file" id="uploadP6" name="uploadP6" style="visibility: hidden; width: 1px; height: 1px" multiple />
+
+                    <a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadP6').click(); return false"><i class="material-icons">input</i>Upload your file</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item orange white-text" href="#seven!">
+            <h2>Practical 7</h2>
+            <div class="gloss">
+
+                <div class="info">
+                    <h3>Practical brief</h3>
+                    <div class="download" align="center">
+                        <a href="files/P7.zip" class="btn waves-effect" download><i class="material-icons">assignment</i>Download P7 specs</a>
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <h4> Your Task:</h4>
+                    <ol align="left">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <div class="con">
+                    <div id="progbar7"></div>
+                </div>
+                <div class="upload" align="center">
+                    <input type="file" id="uploadP7" name="uploadP7" style="visibility: hidden; width: 1px; height: 1px" multiple />
+
+                    <a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadP7').click(); return false"><i class="material-icons">input</i>Upload your file</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item amber white-text" href="#eight!">
+            <h2>Practical 8</h2>
+            <div class="gloss">
+
+                <div class="info">
+                    <h3>Practical brief</h3>
+                    <div class="download" align="center">
+                        <a href="files/P8.zip" class="btn waves-effect" download><i class="material-icons">assignment</i>Download P8 specs</a>
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <h4> Your Task:</h4>
+                    <ol align="left">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <div class="con">
+                    <div id="progbar8"></div>
+                </div>
+                <div class="upload" align="center">
+                    <input type="file" id="uploadP8" name="uploadP8" style="visibility: hidden; width: 1px; height: 1px" multiple />
+
+                    <a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadP8').click(); return false"><i class="material-icons">input</i>Upload your file</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item teal white-text" href="#nine!">
+            <h2>Practical 9</h2>
+            <div class="gloss">
+
+                <div class="info">
+                    <h3>Practical brief</h3>
+                    <div class="download" align="center">
+                        <a href="files/P9.zip" class="btn waves-effect" download><i class="material-icons">assignment</i>Download P9 specs</a>
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <h4> Your Task:</h4>
+                    <ol align="left">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <div class="con">
+                    <div id="progbar9"></div>
+                </div>
+                <div class="upload" align="center">
+                    <input type="file" id="uploadP9" name="uploadP9" style="visibility: hidden; width: 1px; height: 1px" multiple />
+
+                    <a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadP9').click(); return false"><i class="material-icons">input</i>Upload your file</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<ul id="slide-out" class="side-nav">
+	
+		<li>
+			<div class="user-view">
+				<div class="background">
+				<img src="images/office.jpg">
+				</div>
+				<a href="#!user"><img class="circle" src="" alt="hehe"></a>
+				<a href="#!name"><span class="black-text name">John Doe</span></a>
+				<a href="#!email"><span class="black-text email">johnk@gmail.com</span></a>
+			</div>
+		</li>
+		    <li><a href="#!"><i class="material-icons">message</i>Journal</a></li>
+		    <li><a href="stats.html"><i class="material-icons">view_carousel</i>Statistics</a></li>
+        <li><a href="#!"><i class="material-icons">lock_open</i>Rewards</a></li>
+		    <li><div class="divider"></div></li>
+		    <li><a class="subheader">Admin Rights</a></li>
+		    <li><a class="waves-effect" href="#!">Download Assignments</a></li>
+        <li><a class="waves-effect" href="#!">Upload Marks</a></li>
+	</ul>
+	<a href="#" data-activates="slide-out" class="btn-large waves-effect waves-light btn-floating red button-collapse"><i class="material-icons">menu</i></a>
+	
