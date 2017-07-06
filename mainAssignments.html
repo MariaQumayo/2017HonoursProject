@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+
+
+<script>
+    var files;
+
+    // Add events
+    $('input[type=file]').on('change', prepareUpload);
+
+    // Grab the files and set them to our variable
+    function prepareUpload(event)
+    {
+    files = event.target.files;
+    }
+
+    $('form').on('submit', uploadFiles);
+
+    // Catch the form submit and upload the files
+    function uploadFiles(event) {
+        event.stopPropagation(); // Stop stuff happening
+        event.preventDefault(); // Totally stop stuff happening
+
+        // START A LOADING SPINNER HERE
+
+        // Create a formdata object and add the files
+        var data = new FormData();
+        $.each(files, function (key, value) {
+            data.append(key, value);
+        });
+
+        $.ajax({
+            url: 'submit.php?files',
+            type: 'POST',
+            data: data,
+            cache: false,
+            dataType: 'json',
+            processData: false, 
+            contentType: false, 
+            success: function (data, textStatus, jqXHR) {
+                if (typeof data.error === 'undefined') {
+                    // Success so call function to process the form
+                    submitForm(event, data);
+                }
+                else {
+                  
+                    console.log('ERRORS: ' + data.error);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log('ERRORS: ' + textStatus);
+            }
+        });
+    }
+    </script>
+
+    <script>
+   $data = array();
+
+    if(isset($_GET['files']))
+    {  
+        $error = false;
+        $files = array();
+
+        $uploaddir = './uploads/';
+        foreach($_FILES)
+    {
+            if(move_uploaded_file($file['tmp_name'], $uploaddir .basename($file['name'])))
+    {
+               $uploaddir .$file['name'];
+        }
+             else
+            {
+        $error = true;
+                }
+         }
+             $data = ($error) ? array( 'There was an error uploading your files') : array($files);
+        }
+    else
+    {
+        $data = array($_POST);
+        }
+
+    //echo json_encode($data);
+ </script>
+
+</body>
+</html>

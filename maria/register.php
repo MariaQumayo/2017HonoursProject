@@ -3,7 +3,7 @@
 <head>
     <title>Registration</title>
 </head>
-			<form action="login.html"> 
+			<form action="login.php"> 
 				<h1> Register</h1> 
 				<p> 
 					<label >Your username</label>
@@ -15,14 +15,14 @@
 				</p>
 				<p> 
 					<label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
-					<input type="password"  />
+					<input type="text" />
 				</p>
 				<p class="signin button"> 
 					<input type="submit" value="Sign up"/> 
 				</p>
 				<p class="change_link">  
 					Already a member ?
-					<a href="login.html" class="to_register"> Go and log in </a>
+					<a href="#tologin" class="to_register"> Go and log in </a>
 				</p>
 			</form>
 	</body>
