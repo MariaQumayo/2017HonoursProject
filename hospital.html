@@ -4,8 +4,26 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+
+    <script type="text/javascript" src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+                $.ajax({
+                    url: "narrative/intro.txt",
+                    dataType: "text",
+                    success: function (data)
+                    {
+                        $(".text").html(data);
+                    }
+                });
+        }); 
+
+    </script>
 </head>
 <body>
+    <div class="text">
 
+    </div>
 </body>
 </html>

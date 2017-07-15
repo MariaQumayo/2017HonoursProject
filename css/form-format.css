@@ -1,0 +1,45 @@
+﻿body {
+    background-image: url("../images/signInBackground.png");
+}
+
+#LoginForm
+{
+  /*  position: relative;
+    width: 40%;
+    top: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    display: inline-block;*/
+}
+
+#loading
+{
+    position: fixed;
+    width: 40%;
+    top: 10%;
+    left: 30%;
+    /*margin: 0 auto;
+    padding: 70px 0;*/
+    text-align: center;
+}
+
+#Sign-In {
+    position: fixed;
+    width: 40%;
+    top: 10%;
+    left: 30%;
+    /*margin: 0 auto;
+    padding: 70px 0;*/
+    text-align: center;
+}
+
+p {
+    font-family: KGSketch;
+}
+
+@font-face 
+{
+    font-family: KGSketch;
+    src: url(../fonts/KGBlankSpaceSketch.ttf);
+}

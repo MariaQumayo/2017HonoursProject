@@ -1,7 +1,7 @@
-You and your co-robot, R.O.B320 aka "Robbie", have just launched a 3d modelling company.
+<p>You and your co-robot, R.O.B320 aka "Robbie", have just launched a 3d modelling company.</p>
 
-Robbie: "To a successful year of new opportunities"
-You: "Dude, I'M a bit nervous. We haven't got enough clients as we should have by now"
-Robbie: "You worry too much. This is just the begining man! just wait and see"
-you: "yeah...I want to be op-"
-Robbie: "Nope. No negativities. Let's go and celebrate. Not another word about 'We dont know enough to be in this business -blah blah blah"
+<p>Robbie: "To a successful year of new opportunities"</p>
+<p>You: "Dude, I'M a bit nervous. We haven't got enough clients as we should have by now"</p>
+<p>Robbie: "You worry too much. This is just the begining man! just wait and see"</p>
+<p>you: "yeah...I want to be op-"</p>
+<p>Robbie: "Nope. No negativities. Let's go and celebrate. Not another word about 'We dont know enough to be in this business -blah blah blah"</p>
