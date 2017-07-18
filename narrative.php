@@ -6,7 +6,6 @@
     <title></title>
     <link rel="icon" href="images/logo2.png" />
 
-    <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src="jquery-3.2.1.js"></script>
 
     <link rel="stylesheet" type="text/css" href="materialize/materialize/css/materialize.css">
@@ -59,13 +58,18 @@
     <div id="modal1" class="modal">
         <div class="modal-content">
             <script type="text/javascript">
+
+                <?php
+
                 $.ajax({
                     url: "narrative/intro.txt",
                     dataType: "text",
                     success: function (data) {
                         $(".modal-content").html(data);
                     }
-                });
+                    });
+
+                ?>
             </script>
         </div>
         <div class="modal-footer">
