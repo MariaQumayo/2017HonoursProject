@@ -59,7 +59,7 @@
         <div class="modal-content">
             <script type="text/javascript">
                 $.ajax({
-                    url: "narrative/intro.txt",
+                    url: "./narrative/intro.txt",
                     dataType: "text",
                     success: function (data) {
                         $(".modal-content").html(data);
