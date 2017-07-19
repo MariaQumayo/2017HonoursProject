@@ -58,9 +58,6 @@
     <div id="modal1" class="modal">
         <div class="modal-content">
             <script type="text/javascript">
-
-                <?php
-
                 $.ajax({
                     url: "narrative/intro.txt",
                     dataType: "text",
@@ -68,8 +65,6 @@
                         $(".modal-content").html(data);
                     }
                     });
-
-                ?>
             </script>
         </div>
         <div class="modal-footer">
