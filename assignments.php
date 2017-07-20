@@ -1,37 +1,19 @@
-﻿<?php include("auth.php"); 
-
-$target_path  = "assignments/studentUploads/Ass1/";
-$target_dir = $target_path.basename($_FILES['uploadA1']['name']);
-
-if(move_uploaded_file($_FILES['uploadA1']['tmp_name'], $target_dir)) 
-{
-    echo "The file ". basename( $_FILES['uploadA1']['name']).
-" has been uploaded";
-} 
-else
-{
-    echo "There was an error uploading the file, please try again!";
-}
-
-?>
+﻿
 <!DOCTYPE html>
 <html>
 <head>
 	<title>RoboMax</title>
 	<meta charset="UTF-8">
 	<link rel="icon" href="images/logo2.png"/>
-	
 	<script type="text/javascript" src="jquery-3.2.1.js"></script>
-	
 	<link rel="stylesheet" type="text/css" href="materialize/materialize/css/materialize.css">
 	<script type="text/javascript" src="materialize/materialize/js/materialize.js"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
 	<script type="text/javascript" src="js/progressCircle.js"></script>
 	<script type="text/javascript">
+
 	$(document).ready(function(){
 		$('.carousel.carousel-slider').carousel({fullWidth: true});
-				
 		$("#progbar").circularProgress({
 			line_width: 6,
 			color: "red",
@@ -39,8 +21,7 @@ else
 			percent: 0, // percent starts from
 			percentage: true,
 			text: "Progress Mark"
-		}).circularProgress('animate', 2, 2000); //get mark from database
-		
+		}).circularProgress('animate', 2 , 2000); //get mark from database
 	});
 	</script>
 	<style>
@@ -176,14 +157,15 @@ else
 		<div class="carousel-fixed-item corner">
 			<a class="btn waves-effect waves-light btn-floating teal white-text" style="position:fixed;top:3%;right:2%" href="home.html">X</a>
 		</div>
+
+<!--Assignment 1-->
 		<div class="carousel-item white-text" href="#one!" id="ass1">
 			<h2>Assignment 1</h2>
 			<div class="gloss">
-				
 				<div class="info">
 					<h3>Assignment brief</h3>
 					<div class="download" align="center">
-						<a href="#!" class="btn waves-effect" download ><i class="material-icons">assignment</i>Download A1 specs</a>
+						<a href="./assignments/MaxAssignments/Assignment1" class="btn waves-effect" download>Download A1 specs</a>
 					</div>
 					<p>You have joined the the campus Robotics Faculty. You have been tasked with comin up with a new concept of a Robot that can be used to the advantage of the campus. It can be helpful in any way (entertainment, maintenance, education, etc.).</p>
 					<p> Come up with a Robotic Concept that will WoW! the committee to create your Robot (Literally! Winner will get there model 3dPrinted!)</p>
@@ -197,26 +179,40 @@ else
 				<div class="con">
 					<div id="progbar"></div>	
 				</div>
-				<form action="assignments.php" method="post" >
-				<div class="upload" align="center">
-					<input type="file" id="uploadA1" name="uploadA1" style="visibility: hidden; width: 1px; height: 1px" multiple />
-					<input type="file" name="Upload" id="fileToUpload">
-					<a  class="btn waves-effect" ><i class="material-icons">input</i>Upload your file</a>
-					<!--onclick="document.getElementById('uploadA1').click(); return false"-->
-				</div>
-               </form>
-			</div>
-			
-		</div>
+				<?php 
+				if(isset($_POST['submit'])){
+				$name = $_FILES["file"]["name"];
+				$tmp_name = $_FILES['file']['tmp_name'];
+				$error = $_FILES['file']['error'];
+
+				if (isset ($name)) {
+					if (!empty($name)) {
+					$location = 'assignments/studentUploads/Ass1/';
+					if  (move_uploaded_file($tmp_name, $location.$name)){
+						echo 'Upload Successful';    
+						}
+
+						} else {
+						echo 'please choose a file';
+						}
+					}
+				}
+				?>
+				<form action="" method="POST" enctype="multipart/form-data">
+					<input type="file" name="file"><br><br>
+					<input type="submit" name="submit" value="Submit" class="btn waves-effect">
+				</form>
+</div>
+
+<!--Assignment 2-->
+	</div>
 		<div class="carousel-item amber white-text" href="#two!">
 			<h2>Assignment 2</h2>
-			<div class="gloss">
-				
+			<div class="gloss">	
 				<div class="info">
 					<h3>Assignment brief</h3>
-                    <!--<img src="images/logo.png"/>-->
 					<div class="download" align="center">
-						<a href="#!" class="btn waves-effect" download ><i class="material-icons">assignment</i>Download A2 specs</a>
+						<a href="./assignments/MaxAssignments/Assignment2" class="btn waves-effect" download>Download A2 specs</a>
 					</div>
 					<p>You have joined the the campus Robotics Faculty. You have been tasked with comin up with a new concept of a Robot that can be used to the advantage of the campus. It can be helpful in any way (entertainment, maintenance, education, etc.).</p>
 					<p> Come up with a Robotic Concept that will WoW! the committee to create your Robot (Literally! Winner will get there model 3dPrinted!)</p>
@@ -230,13 +226,33 @@ else
 				<div class="con">
 					<div id="progbar2"></div>	
 				</div>
-				<div class="upload" align="center">
-					<input type="file" id="uploadA2" name="uploadA2" style="visibility: hidden; width: 1px; height: 1px" multiple />
+				<?php 
+				if(isset($_POST['submit2'])){
+				$name = $_FILES["file2"]["name"];
+				$tmp_name = $_FILES['file2']['tmp_name'];
+				$error = $_FILES['file2']['error'];
 
-					<a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadA2').click(); return false" ><i class="material-icons">input</i>Upload your file</a>
-				</div>
-			</div>
+				if (isset ($name)) {
+					if (!empty($name)) {
+					$location = 'assignments/studentUploads/Ass2/';
+					if  (move_uploaded_file($tmp_name, $location.$name)){
+						echo 'Upload Successful';    
+						}
+
+						} else {
+						echo 'please choose a file';
+						}
+					}
+				}
+				?>
+				<form action="" method="POST" enctype="multipart/form-data">
+					<input type="file" name="file2"><br><br>
+					<input type="submit" name="submit2" value="Submit" class="btn waves-effect">
+				</form>
 		</div>
+</div>
+
+<!--Assignment 3-->
 		<div id="i2" class="carousel-item green white-text" href="#three!">
 			<h2>Assignment 3</h2>
 			<div class="gloss">
@@ -244,7 +260,7 @@ else
 				<div class="info">
 					<h3>Assignment brief</h3>
 					<div class="download" align="center">
-						<a href="#!" class="btn waves-effect" download ><i class="material-icons">assignment</i>Download A3 specs</a>
+						<a href="./assignments/MaxAssignments/Assignment3" class="btn waves-effect" download>Download A3 specs</a>
 					</div>
 					<p>You have joined the the campus Robotics Faculty. You have been tasked with comin up with a new concept of a Robot that can be used to the advantage of the campus. It can be helpful in any way (entertainment, maintenance, education, etc.).</p>
 					<p> Come up with a Robotic Concept that will WoW! the committee to create your Robot (Literally! Winner will get there model 3dPrinted!)</p>
@@ -258,19 +274,36 @@ else
 				<div class="con">
 					<div id="progbar3"></div>	
 				</div>
-				<div class="upload" align="center">
-					<input type="file" id="uploadA3" name="uploadA3" style="visibility: hidden; width: 1px; height: 1px" multiple />
+			<?php 
+				if(isset($_POST['submit3'])){
+				$name = $_FILES["file3"]["name"];
+				$tmp_name = $_FILES['file3']['tmp_name'];
+				$error = $_FILES['file3']['error'];
 
-					<a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadA3').click(); return false" ><i class="material-icons">input</i>Upload your file</a>
-				</div>
+				if (isset ($name)) {
+					if (!empty($name)) {
+					$location = 'assignments/studentUploads/Ass3/';
+					if  (move_uploaded_file($tmp_name, $location.$name)){
+						echo 'Upload Successful';    
+						}
+						} else {
+						echo 'please choose a file';
+						}
+					}
+				}
+				?>
+				<form action="" method="POST" enctype="multipart/form-data">
+					<input type="file" name="file3"><br><br>
+					<input type="submit" name="submit3" value="Submit" class="btn waves-effect">
+				</form> <br/>
                 <div>
                     <a href="#!" class="btn waves-effect" download><i class="material-icons">assignment</i>Bonus Downloads</a>
                 </div>
 			</div>
 		</div>
 
+<!--Assignment 4-->
         <script>
-
             if (document.getElementById("#i2").is("visible"))
             {
                 alert("nfsdf");
@@ -283,7 +316,7 @@ else
 				<div class="info">
 					<h3>Assignment brief</h3>
 					<div class="download" align="center">
-						<a href="#!" class="btn waves-effect" download ><i class="material-icons">assignment</i>Download A4 specs</a>
+						<a href="./assignments/MaxAssignments/Assignment4" class="btn waves-effect" download> Download A4 specs </a>
 					</div>
 					<p>You have joined the the campus Robotics Faculty. You have been tasked with comin up with a new concept of a Robot that can be used to the advantage of the campus. It can be helpful in any way (entertainment, maintenance, education, etc.).</p>
 					<p> Come up with a Robotic Concept that will WoW! the committee to create your Robot (Literally! Winner will get there model 3dPrinted!)</p>
@@ -297,13 +330,32 @@ else
 				<div class="con">
 					<div id="progbar4"></div>	
 				</div>
-				<div class="upload" align="center">
-					<input type="file" id="uploadA4" name="uploadA4" style="visibility: hidden; width: 1px; height: 1px" multiple />
+			<?php 
+				if(isset($_POST['submit4'])){
+				$name = $_FILES["file4"]["name"];
+				$tmp_name = $_FILES['file4']['tmp_name'];
+				$error = $_FILES['file4']['error'];
 
-					<a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadA4').click(); return false" ><i class="material-icons">input</i>Upload your file</a>
-				</div>
+				if (isset ($name)) {
+					if (!empty($name)) {
+					$location = 'assignments/studentUploads/Ass4/';
+					if  (move_uploaded_file($tmp_name, $location.$name)){
+						echo 'Upload Successful';    
+						}
+						} else {
+						echo 'please choose a file';
+						}
+					}
+				}
+				?>
+				<form action="" method="POST" enctype="multipart/form-data">
+					<input type="file" name="file4"><br><br>
+					<input type="submit" name="submit4" value="Submit" class="btn waves-effect">
+				</form>
 			</div>
 		</div>
+
+<!--Assignment 5-->
 		<div class="carousel-item red white-text" href="#five!">
 			<h2>Assignment 5</h2>
 			<div class="gloss">
@@ -311,7 +363,7 @@ else
 				<div class="info">
 					<h3>Assignment brief</h3>
 					<div class="download" align="center">
-						<a href="#!" class="btn waves-effect" download ><i class="material-icons">assignment</i>Download A5 specs</a>
+						<a href="./assignments/MaxAssignments/Assignment5" class="btn waves-effect" download> Download A5 specs</a>
 					</div>
 					<p>You have joined the the campus Robotics Faculty. You have been tasked with comin up with a new concept of a Robot that can be used to the advantage of the campus. It can be helpful in any way (entertainment, maintenance, education, etc.).</p>
 					<p> Come up with a Robotic Concept that will WoW! the committee to create your Robot (Literally! Winner will get there model 3dPrinted!)</p>
@@ -325,13 +377,34 @@ else
 				<div class="con">
 					<div id="progbar5"></div>	
 				</div>
-				<div class="upload" align="center">
-					<input type="file" id="uploadA5" name="uploadA5" style="visibility: hidden; width: 1px; height: 1px" multiple />
+			<?php 
+				if(isset($_POST['submit5'])){
+				$name = $_FILES["file5"]["name"];
+				$tmp_name = $_FILES['file5']['tmp_name'];
+				$error = $_FILES['file5']['error'];
 
-					<a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadA5').click(); return false" ><i class="material-icons">input</i>Upload your file</a>
-				</div>
+				if (isset ($name)) {
+					if (!empty($name)) {
+					$location = 'assignments/studentUploads/Ass5/';
+					if  (move_uploaded_file($tmp_name, $location.$name)){
+						echo 'Upload Successful';    
+						}
+						} else {
+						echo 'please choose a file';
+						}
+					}
+				}
+				?>
+				<form action="" method="POST" enctype="multipart/form-data">
+					<input type="file" name="file5"><br><br>
+					<input type="submit" name="submit5" value="Submit" class="btn waves-effect">
+				</form> 
 			</div>
 		</div>
+
+
+
+<!-- Assignment 6-->
 		<div class="carousel-item green white-text" href="#six!">
 			<h2>Assignment 6</h2>
 			<div class="gloss">
@@ -339,7 +412,7 @@ else
 				<div class="info">
 					<h3>Assignment brief</h3>
 					<div class="download" align="center">
-						<a href="#!" class="btn waves-effect" download ><i class="material-icons">assignment</i>Download A6 specs</a>
+						<a href="./assignments/MaxAssignments/Assignment6" class="btn waves-effect" download> Download A6 specs</a>
 					</div>
 					<p>You have joined the the campus Robotics Faculty. You have been tasked with comin up with a new concept of a Robot that can be used to the advantage of the campus. It can be helpful in any way (entertainment, maintenance, education, etc.).</p>
 					<p> Come up with a Robotic Concept that will WoW! the committee to create your Robot (Literally! Winner will get there model 3dPrinted!)</p>
@@ -353,13 +426,29 @@ else
 				<div class="con">
 					<div id="progbar6"></div>	
 				</div>
-				<div class="upload" align="center">
-					<input type="file" id="uploadA6" name="uploadA6" style="visibility: hidden; width: 1px; height: 1px" multiple />
+			<?php 
+				if(isset($_POST['submit6'])){
+				$name = $_FILES["file6"]["name"];
+				$tmp_name = $_FILES['file6']['tmp_name'];
+				$error = $_FILES['file6']['error'];
 
-					<a href="#!" class="btn waves-effect" onclick="document.getElementById('uploadA6').click(); return false" ><i class="material-icons">input</i>Upload your file</a>
-				</div>
+				if (isset ($name)) {
+					if (!empty($name)) {
+					$location = 'assignments/studentUploads/Ass6/';
+					if  (move_uploaded_file($tmp_name, $location.$name)){
+						echo 'Upload Successful';    
+						}
+						} else {
+						echo 'please choose a file';
+						}
+					}
+				}
+				?>
+				<form action="" method="POST" enctype="multipart/form-data">
+					<input type="file" name="file6"><br><br>
+					<input type="submit" name="submit6" value="Submit" class="btn waves-effect">
+				</form> 
 			</div>
-			
 		</div>
 	</div>
 </body>
